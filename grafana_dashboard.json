@@ -18,23 +18,23 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 2,
-  "id": 1,
+  "id": 5,
   "links": [],
   "panels": [
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bdr06l9c4j474b"
+        "uid": "cdpra67keyry8a"
       },
       "fieldConfig": {
         "defaults": {
           "color": {
-            "mode": "palette-classic"
+            "mode": "palette-classic-by-name"
           },
           "custom": {
             "axisBorderShow": false,
             "axisCenteredZero": false,
-            "axisColorMode": "text",
+            "axisColorMode": "series",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
@@ -47,7 +47,7 @@
               "viz": false
             },
             "insertNulls": false,
-            "lineInterpolation": "linear",
+            "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
@@ -70,10 +70,6 @@
               {
                 "color": "green",
                 "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
               }
             ]
           }
@@ -283,7 +279,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "bdr06l9c4j474b"
+            "uid": "cdpra67keyry8a"
           },
           "query": "from(bucket: \"weather\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"hourly_weather\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)\r\n  |> yield(name: \"mean\")",
           "refId": "A"
@@ -296,7 +292,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bdr06l9c4j474b"
+        "uid": "cdpra67keyry8a"
       },
       "fieldConfig": {
         "defaults": {
@@ -353,7 +349,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "bdr06l9c4j474b"
+            "uid": "cdpra67keyry8a"
           },
           "query": "from(bucket: \"weather\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"current_weather\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"temperature\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A"
@@ -365,7 +361,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bdr06l9c4j474b"
+        "uid": "cdpra67keyry8a"
       },
       "fieldConfig": {
         "defaults": {
@@ -422,7 +418,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "bdr06l9c4j474b"
+            "uid": "cdpra67keyry8a"
           },
           "query": "from(bucket: \"weather\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"current_weather\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"apparentTemperature\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A"
@@ -434,7 +430,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bdr06l9c4j474b"
+        "uid": "cdpra67keyry8a"
       },
       "fieldConfig": {
         "defaults": {
@@ -491,7 +487,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "bdr06l9c4j474b"
+            "uid": "cdpra67keyry8a"
           },
           "query": "from(bucket: \"weather\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"current_weather\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"humidity\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A"
@@ -503,7 +499,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bdr06l9c4j474b"
+        "uid": "cdpra67keyry8a"
       },
       "fieldConfig": {
         "defaults": {
@@ -553,7 +549,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "bdr06l9c4j474b"
+            "uid": "cdpra67keyry8a"
           },
           "query": "from(bucket: \"weather\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"hourly_weather\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"precipitation_probability\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A"
@@ -566,7 +562,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bdr06l9c4j474b"
+        "uid": "cdpra67keyry8a"
       },
       "fieldConfig": {
         "defaults": {
@@ -616,7 +612,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "bdr06l9c4j474b"
+            "uid": "cdpra67keyry8a"
           },
           "query": "from(bucket: \"weather\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"hourly_weather\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"visibility\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A"
@@ -629,7 +625,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bdr06l9c4j474b"
+        "uid": "cdpra67keyry8a"
       },
       "fieldConfig": {
         "defaults": {
@@ -678,7 +674,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "bdr06l9c4j474b"
+            "uid": "cdpra67keyry8a"
           },
           "query": "from(bucket: \"weather\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"hourly_weather\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"uvIndex\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A"
@@ -691,7 +687,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bdr06l9c4j474b"
+        "uid": "cdpra67keyry8a"
       },
       "fieldConfig": {
         "defaults": {
@@ -740,7 +736,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "bdr06l9c4j474b"
+            "uid": "cdpra67keyry8a"
           },
           "query": "from(bucket: \"weather\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"current_weather\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"windDirection\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A"
@@ -752,7 +748,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bdr06l9c4j474b"
+        "uid": "cdpra67keyry8a"
       },
       "fieldConfig": {
         "defaults": {
@@ -801,7 +797,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "bdr06l9c4j474b"
+            "uid": "cdpra67keyry8a"
           },
           "query": "from(bucket: \"weather\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"current_weather\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"windSpeed\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A"
@@ -813,7 +809,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bdr06l9c4j474b"
+        "uid": "cdpra67keyry8a"
       },
       "fieldConfig": {
         "defaults": {
@@ -862,7 +858,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "bdr06l9c4j474b"
+            "uid": "cdpra67keyry8a"
           },
           "query": "from(bucket: \"weather\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"current_weather\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"cloudCover\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A"
@@ -874,7 +870,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bdr06l9c4j474b"
+        "uid": "cdpra67keyry8a"
       },
       "fieldConfig": {
         "defaults": {
@@ -923,7 +919,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "bdr06l9c4j474b"
+            "uid": "cdpra67keyry8a"
           },
           "query": "from(bucket: \"weather\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"current_weather\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"rain\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A"
@@ -935,7 +931,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bdr06l9c4j474b"
+        "uid": "cdpra67keyry8a"
       },
       "fieldConfig": {
         "defaults": {
@@ -984,7 +980,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "bdr06l9c4j474b"
+            "uid": "cdpra67keyry8a"
           },
           "query": "from(bucket: \"weather\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"current_weather\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"showers\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A"
@@ -1009,7 +1005,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bdr06l9c4j474b"
+        "uid": "cdpra67keyry8a"
       },
       "fieldConfig": {
         "defaults": {
@@ -1042,8 +1038,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1118,7 +1113,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "bdr06l9c4j474b"
+            "uid": "cdpra67keyry8a"
           },
           "query": "from(bucket: \"weather\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"daily_weather\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"maxTemperature\" or r[\"_field\"] == \"minTemperature\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A"
@@ -1130,7 +1125,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bdr06l9c4j474b"
+        "uid": "cdpra67keyry8a"
       },
       "fieldConfig": {
         "defaults": {
@@ -1163,8 +1158,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1239,7 +1233,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "bdr06l9c4j474b"
+            "uid": "cdpra67keyry8a"
           },
           "query": "from(bucket: \"weather\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"daily_weather\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"minApparentTemperature\" or r[\"_field\"] == \"maxApparentTemperature\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A"
@@ -1251,7 +1245,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bdr06l9c4j474b"
+        "uid": "cdpra67keyry8a"
       },
       "fieldConfig": {
         "defaults": {
@@ -1284,8 +1278,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1359,7 +1352,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "bdr06l9c4j474b"
+            "uid": "cdpra67keyry8a"
           },
           "query": "from(bucket: \"weather\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"daily_weather\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"sunrise\" or r[\"_field\"] == \"sunset\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A"
@@ -1371,7 +1364,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bdr06l9c4j474b"
+        "uid": "cdpra67keyry8a"
       },
       "fieldConfig": {
         "defaults": {
@@ -1404,8 +1397,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "yellow",
@@ -1471,7 +1463,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "bdr06l9c4j474b"
+            "uid": "cdpra67keyry8a"
           },
           "query": "from(bucket: \"weather\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"daily_weather\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"uvIndex\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A"
@@ -1483,7 +1475,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bdr06l9c4j474b"
+        "uid": "cdpra67keyry8a"
       },
       "fieldConfig": {
         "defaults": {
@@ -1516,8 +1508,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           }
@@ -1627,7 +1618,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "bdr06l9c4j474b"
+            "uid": "cdpra67keyry8a"
           },
           "query": "from(bucket: \"weather\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"daily_weather\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"rain\" or r[\"_field\"] == \"precipitation_hours\" or r[\"_field\"] == \"precipitation_probability_max\" or r[\"_field\"] == \"showers\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A"
@@ -1639,7 +1630,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bdr06l9c4j474b"
+        "uid": "cdpra67keyry8a"
       },
       "fieldConfig": {
         "defaults": {
@@ -1672,8 +1663,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           }
@@ -1751,7 +1741,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "bdr06l9c4j474b"
+            "uid": "cdpra67keyry8a"
           },
           "query": "from(bucket: \"weather\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"daily_weather\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"dominantWindDirection\" or r[\"_field\"] == \"maxWindSpeed\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A"
@@ -1776,7 +1766,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bdr06l9c4j474b"
+        "uid": "cdpra67keyry8a"
       },
       "fieldConfig": {
         "defaults": {
@@ -1799,7 +1789,7 @@
               "viz": false
             },
             "insertNulls": false,
-            "lineInterpolation": "linear",
+            "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
@@ -1820,8 +1810,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1895,7 +1884,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "bdr06l9c4j474b"
+            "uid": "cdpra67keyry8a"
           },
           "query": "from(bucket: \"weather\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"hourly_weather\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"apparentTemperature\" or r[\"_field\"] == \"temperature\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A"
@@ -1907,7 +1896,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bdr06l9c4j474b"
+        "uid": "cdpra67keyry8a"
       },
       "fieldConfig": {
         "defaults": {
@@ -1930,7 +1919,7 @@
               "viz": false
             },
             "insertNulls": false,
-            "lineInterpolation": "linear",
+            "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
@@ -1951,8 +1940,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "yellow",
-                "value": null
+                "color": "yellow"
               },
               {
                 "color": "green",
@@ -2014,7 +2002,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "bdr06l9c4j474b"
+            "uid": "cdpra67keyry8a"
           },
           "query": "from(bucket: \"weather\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"hourly_weather\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"humidity\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A"
@@ -2026,7 +2014,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bdr06l9c4j474b"
+        "uid": "cdpra67keyry8a"
       },
       "fieldConfig": {
         "defaults": {
@@ -2049,7 +2037,7 @@
               "viz": false
             },
             "insertNulls": false,
-            "lineInterpolation": "linear",
+            "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
@@ -2070,8 +2058,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "yellow",
-                "value": null
+                "color": "yellow"
               },
               {
                 "color": "green",
@@ -2165,7 +2152,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "bdr06l9c4j474b"
+            "uid": "cdpra67keyry8a"
           },
           "query": "from(bucket: \"weather\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"hourly_weather\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"rain\" or r[\"_field\"] == \"showers\" or r[\"_field\"] == \"precipitation_probability\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A"
@@ -2177,7 +2164,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bdr06l9c4j474b"
+        "uid": "cdpra67keyry8a"
       },
       "fieldConfig": {
         "defaults": {
@@ -2200,7 +2187,7 @@
               "viz": false
             },
             "insertNulls": false,
-            "lineInterpolation": "linear",
+            "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
@@ -2221,8 +2208,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2280,7 +2266,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "bdr06l9c4j474b"
+            "uid": "cdpra67keyry8a"
           },
           "query": "from(bucket: \"weather\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"hourly_weather\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"cloudCover\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A"
@@ -2292,7 +2278,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bdr06l9c4j474b"
+        "uid": "cdpra67keyry8a"
       },
       "fieldConfig": {
         "defaults": {
@@ -2315,7 +2301,7 @@
               "viz": false
             },
             "insertNulls": false,
-            "lineInterpolation": "linear",
+            "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
@@ -2336,8 +2322,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2411,7 +2396,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "bdr06l9c4j474b"
+            "uid": "cdpra67keyry8a"
           },
           "query": "from(bucket: \"weather\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"hourly_weather\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"visibility\" or r[\"_field\"] == \"uvIndex\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A"
@@ -2423,7 +2408,7 @@
     {
       "datasource": {
         "type": "influxdb",
-        "uid": "bdr06l9c4j474b"
+        "uid": "cdpra67keyry8a"
       },
       "fieldConfig": {
         "defaults": {
@@ -2446,7 +2431,7 @@
               "viz": false
             },
             "insertNulls": false,
-            "lineInterpolation": "linear",
+            "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
@@ -2467,8 +2452,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -2542,7 +2526,7 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "bdr06l9c4j474b"
+            "uid": "cdpra67keyry8a"
           },
           "query": "from(bucket: \"weather\")\r\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\r\n  |> filter(fn: (r) => r[\"_measurement\"] == \"hourly_weather\")\r\n  |> filter(fn: (r) => r[\"_field\"] == \"windDirection\" or r[\"_field\"] == \"windSpeed\")\r\n  |> aggregateWindow(every: v.windowPeriod, fn: last, createEmpty: false)\r\n  |> yield(name: \"last\")",
           "refId": "A"
@@ -2567,6 +2551,6 @@
   "timezone": "Asia/Bangkok",
   "title": "Weather",
   "uid": "fdqxln8ir591cb",
-  "version": 6,
-  "weekStart": ""
+  "version": 7,
+  "weekStart": "sunday"
 }
