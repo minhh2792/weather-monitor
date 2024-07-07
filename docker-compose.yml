@@ -1,0 +1,45 @@
+services:
+  collector:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: collector
+    ports:
+      - 1234:1234
+    volumes:
+      - ./config:/collector/config
+    restart: always
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    environment:
+      - GF_ANALYTICS_REPORTING_ENABLED=false
+      - GF_SERVER_DOMAIN=grafana.minevn.studio
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+    ports:
+      - 3000:3000
+    volumes:
+      - ./data/grafana:/var/lib/grafana
+    restart: always
+    user: "${UID}:${GID}"
+
+  influxdb:
+    image: influxdb:alpine
+    container_name: influxdb
+    security_opt:
+      - no-new-privileges:true
+    environment:
+      - DOCKER_INFLUXDB_INIT_MODE=setup
+      - DOCKER_INFLUXDB_INIT_USERNAME=kiwi
+      - DOCKER_INFLUXDB_INIT_PASSWORD=kiwi@123
+      - DOCKER_INFLUXDB_INIT_ORG=kiwilab
+      - DOCKER_INFLUXDB_INIT_BUCKET=weather
+      - DOCKER_INFLUXDB_INIT_RETENTION=0
+      - DOCKER_INFLUXDB_INIT_ADMIN_TOKEN=kiwi@token@123
+    ports:
+      - "8086:8086"
+    volumes:
+      - ./data/influx/config:/etc/influxdb2
+      - ./data/influx/db:/var/lib/influxdb2
+    restart: always
